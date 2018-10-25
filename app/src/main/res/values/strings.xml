@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">点赞宝</string>
+    <string name="description">欢迎使用点赞宝服务</string>
+    <string name="base_accessibility_summary">点赞宝</string>
+</resources>
