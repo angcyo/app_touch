@@ -49,6 +49,11 @@ class FlowAccessibilityService : BaseAccessibilityService() {
             }
 
         var isServiceConnected = false
+
+        //点击事件 间隔
+        var touchInterval = 20L
+        //点击事件 持续
+        var touchDuration = 20L
     }
 
     override fun onServiceConnected() {
@@ -66,15 +71,18 @@ class FlowAccessibilityService : BaseAccessibilityService() {
                             moveTo(Touch.getX().toFloat(), Touch.getY().toFloat())
                         }, Path().apply {
                             moveTo(Touch.getX().toFloat(), Touch.getY().toFloat())
-                        }, Path().apply {
-                            moveTo(Touch.getX().toFloat(), Touch.getY().toFloat())
+
+//                            moveTo(Touch.getX().toFloat() + 10, Touch.getY().toFloat() + 10)
                         }),
-                        longArrayOf(0, 10, 20), longArrayOf(20, 20, 20)
+                        // longArrayOf(0, 200), longArrayOf(160, 160)
+                        touchInterval, touchDuration
                     )
                 }
-                Thread.sleep(100)
+                Thread.sleep((touchInterval + touchDuration) * 2 + touchInterval)
             }
         }.start()
+
+        MainActivity.loadConfig()
     }
 
     override fun onDestroy() {

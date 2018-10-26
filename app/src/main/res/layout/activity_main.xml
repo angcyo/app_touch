@@ -11,6 +11,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -19,6 +21,40 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/button"
                 android:text="检查权限"/>
+
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                    android:id="@+id/touch_interval"
+                    style="@style/BaseMainTextStyle"
+                    android:textSize="12dp"
+                    android:layout_width="200dp"
+                    android:hint="点击间隔时间 毫秒(推荐 20-40)"
+                    android:layout_height="wrap_content"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                    android:id="@+id/touch_duration"
+                    style="@style/BaseMainTextStyle"
+                    android:textSize="12dp"
+                    android:layout_width="200dp"
+                    android:hint="点击持续时间 毫秒(推荐 20-160)"
+                    android:layout_height="wrap_content"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+                android:textSize="9dp"
+                android:text="请在关闭状态下,设置. 不合理的值, 会引起系统重启."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
