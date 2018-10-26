@@ -4,4 +4,7 @@
         android:canPerformGestures="true"
         android:description="@string/description"
         android:summary="点赞宝服务"
+        android:accessibilityEventTypes="typeWindowStateChanged"
+        android:accessibilityFlags="flagDefault"
+        android:accessibilityFeedbackType="feedbackAllMask"
 />

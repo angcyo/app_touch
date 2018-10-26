@@ -35,4 +35,11 @@ object SwitchFloat {
         view = null
         FloatWindow.destroy(TAG)
     }
+
+    fun close() {
+        view?.let {
+            val switchCompat: CompoundButton = it.findViewById(R.id.switch_button)
+            switchCompat.isChecked = false
+        }
+    }
 }

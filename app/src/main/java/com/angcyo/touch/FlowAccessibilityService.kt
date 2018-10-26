@@ -2,6 +2,7 @@ package com.angcyo.touch
 
 import android.graphics.Path
 import android.view.WindowManager
+import android.view.accessibility.AccessibilityEvent
 import com.angcyo.lib.L
 import com.angcyo.uiview.less.accessibility.BaseAccessibilityService
 import com.angcyo.uiview.less.accessibility.touch
@@ -56,6 +57,9 @@ class FlowAccessibilityService : BaseAccessibilityService() {
         var touchDuration = 20L
     }
 
+    /**切换应用, 暂停操作*/
+    private var lastPackageName = ""
+
     override fun onServiceConnected() {
         super.onServiceConnected()
         isServiceConnected = true
@@ -77,12 +81,26 @@ class FlowAccessibilityService : BaseAccessibilityService() {
                         // longArrayOf(0, 200), longArrayOf(160, 160)
                         touchInterval, touchDuration
                     )
+                    Thread.sleep((touchInterval + touchDuration) * 2 + touchInterval)
+                } else {
+                    Thread.sleep(1000)
+                    Thread.yield()
                 }
-                Thread.sleep((touchInterval + touchDuration) * 2 + touchInterval)
             }
         }.start()
 
         MainActivity.loadConfig()
+    }
+
+    override fun onWindowStateChanged(event: AccessibilityEvent) {
+        super.onWindowStateChanged(event)
+        L.e("切换到:${event.packageName}")
+
+        if (lastPackageName.isNotEmpty() && !lastPackageName.equals("${event.packageName}", true)) {
+            //切换了应用
+            SwitchFloat.close()
+        }
+        lastPackageName = "${event.packageName}"
     }
 
     override fun onDestroy() {

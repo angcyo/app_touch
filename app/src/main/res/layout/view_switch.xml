@@ -4,10 +4,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    <Switch
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:id="@+id/switch_button"/>
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_marginLeft="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拖动 "
+                style="@style/BaseDarkTextStyle"/>
+
+        <Switch
+                style="@style/BaseDarkTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:id="@+id/switch_button"/>
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

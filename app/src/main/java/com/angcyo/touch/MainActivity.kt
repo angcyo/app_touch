@@ -40,7 +40,10 @@ class MainActivity : AppCompatActivity() {
     val touchIntervalWatcher = object : SingleTextWatcher() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             s?.let {
-                FlowAccessibilityService.touchInterval = it.toString().toLong()
+                try {
+                    FlowAccessibilityService.touchInterval = it.toString().toLong()
+                } catch (e: Exception) {
+                }
             }
         }
     }
@@ -48,7 +51,10 @@ class MainActivity : AppCompatActivity() {
     val touchDurationWatcher = object : SingleTextWatcher() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             s?.let {
-                FlowAccessibilityService.touchDuration = it.toString().toLong()
+                try {
+                    FlowAccessibilityService.touchDuration = it.toString().toLong()
+                } catch (e: Exception) {
+                }
             }
         }
     }
