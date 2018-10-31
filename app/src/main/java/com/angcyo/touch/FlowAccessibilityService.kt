@@ -64,6 +64,8 @@ class FlowAccessibilityService : BaseAccessibilityService() {
         super.onServiceConnected()
         isServiceConnected = true
 
+        addInterceptor(DingDingInterceptor())
+
         Touch.show(applicationContext)
         SwitchFloat.show(applicationContext)
 
@@ -94,7 +96,7 @@ class FlowAccessibilityService : BaseAccessibilityService() {
 
     override fun onWindowStateChanged(event: AccessibilityEvent) {
         super.onWindowStateChanged(event)
-        L.e("切换到:${event.packageName}")
+        L.e("切换到:${event.packageName} ${event.className}")
 
         if (lastPackageName.isNotEmpty() && !lastPackageName.equals("${event.packageName}", true)) {
             //切换了应用
